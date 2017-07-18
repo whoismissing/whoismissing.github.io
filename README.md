@@ -1,5 +1,5 @@
 # whoismissing.github.io
 
-Source:
+Resources:
 
 http://jmcglone.com/guides/github-pages/
