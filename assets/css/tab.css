@@ -1,0 +1,78 @@
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px 16px;
+    transition: 0.3s;
+    font-size: 125%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    content: ""; 
+    clear: both;
+    display: none;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    background-color: white;
+}
+
+/* adjust location of header text */
+h3 {
+    padding-left: 20px;
+}
+
+/* adjust location of paragraph text */
+p {
+    padding-left: 20px;
+}
+
+/* Style the resource links */
+p[itemprop="url"] a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Hover effect */
+a:hover {
+    opacity: 0.7;
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}

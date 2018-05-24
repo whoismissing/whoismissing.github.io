@@ -1,0 +1,19 @@
+body {
+    background: #f1f1f1;
+}
+
+/* blog block styling */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+h2[itemprop="name"] a {
+    text-decoration: none;
+    color: #1E90FF;
+}
+
+section[itemprop="description"] p {
+    font-size: 125%;
+}
