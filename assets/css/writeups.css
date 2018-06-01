@@ -11,10 +11,11 @@ body {
 
 h2[itemprop="name"] a {
     text-decoration: none;
-    font-family: "Verdana";
+    font-family: "Open Sans";
     color: #1E90FF;
 }
 
 section[itemprop="description"] p {
     font-size: 125%;
+    font-family: "Open Sans";
 }

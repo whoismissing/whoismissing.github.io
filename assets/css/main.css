@@ -18,7 +18,17 @@ body {
 }
 
 /* nav bar link styling */
-.navbar a{
+#navleft {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    text-decoration: none; /* remove underline */
+    font-size: 125%;
+}
+
+#navright {
     float: right;
     display: block;
     color: white;
@@ -38,10 +48,10 @@ body {
 .terminal {
     background-color: black;
     box-sizing: content-box;
-    height: 300px;
+    height: 400px;
     display: block;
     padding: 30px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 /* Terminal output styling */
@@ -49,6 +59,9 @@ body {
     color: MediumSeaGreen;
     font-size: 30px;
     font-family: "Courier New", Courier, monospace;
+    margin-top: 0px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 .footer {
@@ -79,5 +92,6 @@ body {
 @media screen and (max-width: 600px) {
     .terminal {
         width: 100%;
+        height: 1600px;
     }
 }

@@ -8,6 +8,7 @@
     border-collapse: collapse;
     width: 100%;
     /* change font here */
+    font-family: "Open Sans";
 }
 
 /* table border styling */
@@ -21,6 +22,7 @@
 #table a {
     text-decoration: none;
     color: black;
+    font-family: "Open Sans";
 }
 
 /* change text color on mouse hover */
