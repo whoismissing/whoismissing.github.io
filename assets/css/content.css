@@ -4,11 +4,16 @@
     margin-bottom: 50px;
 }
 
+.title {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #12ADF5;
+}
+
 #table {
     border-collapse: collapse;
     width: 100%;
     /* change font here */
-    font-family: "Open Sans";
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* table border styling */
@@ -22,7 +27,7 @@
 #table a {
     text-decoration: none;
     color: black;
-    font-family: "Open Sans";
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* change text color on mouse hover */

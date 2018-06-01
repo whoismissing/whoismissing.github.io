@@ -11,11 +11,11 @@ body {
 
 h2[itemprop="name"] a {
     text-decoration: none;
-    font-family: "Open Sans";
-    color: #1E90FF;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #12ADF5;
 }
 
 section[itemprop="description"] p {
     font-size: 125%;
-    font-family: "Open Sans";
+    font-family: 'Source Sans Pro', sans-serif;
 }

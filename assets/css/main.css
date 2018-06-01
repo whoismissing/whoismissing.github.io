@@ -14,28 +14,34 @@ body {
 
 .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
+    height: 55px;
+    margin-top: -15px;
 }
 
 /* nav bar link styling */
 #navleft {
     float: left;
     display: block;
-    color: white;
+    color: #12ADF5;
     text-align: center;
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
     font-size: 125%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
 }
 
 #navright {
     float: right;
     display: block;
-    color: white;
+    color: #12ADF5;
     text-align: center;
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
     font-size: 125%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
 }
 
 /* Change color on hover */
@@ -46,7 +52,7 @@ body {
 
 /* Effect for terminal as background */
 .terminal {
-    background-color: black;
+    background-color: #343434;
     box-sizing: content-box;
     height: 400px;
     display: block;
@@ -56,10 +62,11 @@ body {
 
 /* Terminal output styling */
 #output {
-    color: MediumSeaGreen;
-    font-size: 30px;
-    font-family: "Courier New", Courier, monospace;
-    margin-top: 0px;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 50px;
     margin-left: 150px;
     margin-right: 150px;
 }
