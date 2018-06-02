@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <!-- meta information of doc -->
+  <head>
+    <title>missing's corner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="code.css">
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+
+    <!-- banner at top of website -->
+    <picture>
+        <img src="../images/banner.png" alt="Banner" style="width:100%;">
+    </picture>
+
+    <!-- navigation bar -->
+    <div class="navbar">
+        <a id="navleft" href="../index.html">HOME</a>
+        <a id="navleft" href="../writeups.html">WRITE-UPS</a>
+        <a id="navleft" href="../code.html">CODE</a>
+        <a id="navleft" href="../resources.html">RESOURCES</a>
+        <a id="navright" href="#">CREDITS</a>
+        <a id="navright" href="#">ABOUT</a>
+    </div>
+
+    <!-- HTML content generated from markdown -->
+    <div class="card">
+
+        <!-- back button -->
+        <a href="../code.html" class="button">Back</a>
+
+        <h2 id="use-after-free">Use after free</h2>
+        <p>Use-after-free is a memory corruption flaw where memory can be accessed after being freed. This can result in a program crash, use of unexpected values, and even code execution.</p>
+        <p>As seen in the code below, <em>malloc()</em> is called and will return an address that is stored in the pointer &quot;pFree&quot;. Though the pointer is freed, it is used again in the second <em>strcpy()</em> as the pointer still contains the value of the address that <em>malloc()</em> returned.</p>
+        <p><strong>Mitigation</strong></p>
+        <p>The mitigating code is to set the value of the pointer to NULL after freeing as well as to create a new pointer when in need of performing another memory allocation.</p>
+        <p><strong>Vulnerable Code</strong></p>
+        <pre><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-comment">// use after free example</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span> * pFree;
+
+    pFree = (<span class="hljs-keyword">char</span> *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>) * <span class="hljs-number">100</span>);
+    <span class="hljs-built_in">strcpy</span>(pFree, <span class="hljs-string">"Hello"</span>);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"pFree = %p\n"</span>, pFree);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, pFree);
+
+    <span class="hljs-built_in">free</span>(pFree);
+
+    <span class="hljs-comment">// mitigation: NULL the pointer after freeing</span>
+    <span class="hljs-comment">// pfree = NULL;</span>
+
+    <span class="hljs-built_in">strcpy</span>(pFree + <span class="hljs-number">5</span>, <span class="hljs-string">" world"</span>);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"pFree = %p\n"</span>, pFree);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, pFree);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre><p><strong>Program Output</strong></p>
+<pre><code><span class="hljs-attribute">pFree</span> = <span class="hljs-number">0</span>x7f93274027f0
+Hello
+<span class="hljs-attribute">pFree</span> = <span class="hljs-number">0</span>x7f93274027f0
+Hello world
+</code></pre>
+    </div>
+    <!-- end of content -->
+
+    <!-- footer with contact info -->
+    <div class="footer">
+        <a href="https://github.com/whoismissing" class="fa fa-github"></a>
+        <a href="https://twitter.com/0xmissing" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+    </div>
+
+    </body>
+
+</html>

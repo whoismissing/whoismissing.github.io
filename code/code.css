@@ -1,0 +1,23 @@
+/* blog block styling */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Back button styling */
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: white;
+
+    border: none;
+    padding: 5px 28px;
+    cursor: pointer;
+    font-size: 125%;
+    background-color: #1E90FF;
+    font-family: 'Source Sans Pro', sans-serif;
+}
