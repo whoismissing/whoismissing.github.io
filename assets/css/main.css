@@ -14,7 +14,7 @@ body {
 
 .navbar {
     overflow: hidden;
-    background-color: white;
+    background-color: #e8ecef;
     height: 55px;
     margin-top: -15px;
 }
@@ -23,7 +23,7 @@ body {
 #navleft {
     float: left;
     display: block;
-    color: #12ADF5;
+    color: #08abdb;
     text-align: center;
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
@@ -35,7 +35,7 @@ body {
 #navright {
     float: right;
     display: block;
-    color: #12ADF5;
+    color: #08abdb;
     text-align: center;
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
@@ -52,7 +52,7 @@ body {
 
 /* Effect for terminal as background */
 .terminal {
-    background-color: #343434;
+    background-color: #02102b;
     box-sizing: content-box;
     height: 400px;
     display: block;

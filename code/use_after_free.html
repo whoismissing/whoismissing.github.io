@@ -31,19 +31,19 @@
         <a id="navright" href="#">ABOUT</a>
     </div>
 
-    <!-- HTML content generated from markdown -->
     <div class="card">
 
         <!-- back button -->
         <a href="../code.html" class="button">Back</a>
-
-        <h2 id="use-after-free">Use after free</h2>
-        <p>Use-after-free is a memory corruption flaw where memory can be accessed after being freed. This can result in a program crash, use of unexpected values, and even code execution.</p>
-        <p>As seen in the code below, <em>malloc()</em> is called and will return an address that is stored in the pointer &quot;pFree&quot;. Though the pointer is freed, it is used again in the second <em>strcpy()</em> as the pointer still contains the value of the address that <em>malloc()</em> returned.</p>
-        <p><strong>Mitigation</strong></p>
-        <p>The mitigating code is to set the value of the pointer to NULL after freeing as well as to create a new pointer when in need of performing another memory allocation.</p>
-        <p><strong>Vulnerable Code</strong></p>
-        <pre><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+        
+    <!-- HTML content generated from markdown -->
+<h2 id="use-after-free">Use after free</h2>
+<p>Use-after-free is a memory corruption flaw where memory can be accessed after being freed as a result of a dangling pointer. This can result in a program crash, use of unexpected values, and even code execution.</p>
+<p>As seen in the code below, <em>malloc()</em> is called and will return an address that is stored in the pointer &quot;pFree&quot;. Though the pointer is freed, it is used again in the second <em>strcpy()</em> as the pointer still contains the value of the address that <em>malloc()</em> returned. </p>
+<p><strong>Mitigation</strong> </p>
+<p>The mitigating code is to set the value of the pointer to NULL after freeing as well as to create a new pointer when in need of performing another memory allocation.</p>
+<p><strong>Vulnerable Code</strong></p>
+<pre><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
 

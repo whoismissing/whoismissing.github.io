@@ -4,9 +4,15 @@
     margin-bottom: 50px;
 }
 
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px;
+    font-size: 125%;
+}
+
 .title {
     font-family: 'Source Sans Pro', sans-serif;
-    color: #12ADF5;
+    color: #08abdb;
 }
 
 #table {
@@ -49,7 +55,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #1E90FF;
+    background-color: #08abdb;
     color: white;
 }
 

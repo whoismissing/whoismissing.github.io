@@ -35,7 +35,7 @@
 
         <!-- back button -->
         <a href="../code.html" class="button">Back</a>
-
+        
     <!-- HTML content generated from markdown -->
 <h2 id="stack-buffer-overflow">Stack buffer overflow</h2>
 <p>A stack buffer overflow is a memory corruption flaw where memory on the stack is overwritten outside of the buffer due to a lack of bounds checking. This can result in a program crash, alteration of critical values, and even code execution.</p>
@@ -54,7 +54,7 @@
 <li>vsprintf()</li>
 </ul>
 <p><strong>Mitigation</strong></p>
-<p>The mitigating code is to utilize the C functions for obtaining user input that specify maximum length as well as by checking the bounds of an array before writing to a buffer.</p>
+<p>The mitigating code is to utilize the C functions for obtaining user input that specify maximum length as well as by checking the bounds of an array before writing to a buffer. </p>
 <p>Equivalent functions that check for length are:</p>
 <ul>
 <li>fgets()</li>
@@ -63,7 +63,7 @@
 <li>strncat()</li>
 <li>snprintf()</li>
 </ul>
-<p>In specific cases, modifying the order of local variables declared will prevent those values from being overwritten though that does not prevent the overflowing capability.</p>
+<p>In specific cases, modifying the order of local variables declared will prevent those values from being overwritten though that does not prevent the overflowing capability. </p>
 <p>Other protection mechanisms against buffer overflows implemented by compilers and operating systems include:</p>
 <ul>
 <li>Stack canaries</li>
@@ -81,7 +81,7 @@
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">int</span> iFlag = <span class="hljs-number">0</span>;
     <span class="hljs-keyword">char</span> szBuffer[<span class="hljs-number">15</span>];
-    <span class="hljs-comment">// int iFlag = 0;</span>
+    <span class="hljs-comment">// int iFlag = 0;  </span>
     <span class="hljs-comment">// changing the declaration of iFlag to here will prevent it from being overwritten in this case; however, other memory is still being overwritten</span>
 
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n Enter the password : \n"</span>);
@@ -107,25 +107,25 @@
 </code></pre><p><strong>Normal Program Output</strong></p>
 <pre><code>$ ./stack_overflow_1
 
- Enter the password : <span class="hljs-type">password</span>
+    Enter the password : <span class="hljs-type">password</span>
 
- Correct Password
+    Correct Password
 
- <span class="hljs-keyword">If</span> password was wrong, this should <span class="hljs-keyword">not</span> print
+    <span class="hljs-keyword">If</span> password was wrong, this should <span class="hljs-keyword">not</span> print 
 
 $ ./stack_overflow_1
 
- Enter the password : <span class="hljs-type">wrongpassword</span>
+    Enter the password : <span class="hljs-type">wrongpassword</span>
 
- Wrong Password
+    Wrong Password
 </code></pre><p><strong>Overflow Program Output</strong></p>
 <pre><code>$ ./stack_overflow_1
 
- Enter the password : <span class="hljs-type">AAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
+    Enter the password : <span class="hljs-type">AAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
 
- Wrong Password
+    Wrong Password
 
- <span class="hljs-keyword">If</span> password was wrong, this should <span class="hljs-keyword">not</span> print
+    <span class="hljs-keyword">If</span> password was wrong, this should <span class="hljs-keyword">not</span> print
 </code></pre><h3 id="example-2-">Example 2:</h3>
 <pre><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
@@ -145,11 +145,10 @@ $ ./stack_overflow_1
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-
     </div>
     <!-- end of content -->
 
-   <!-- footer with contact info -->
+    <!-- footer with contact info -->
     <div class="footer">
         <a href="https://github.com/whoismissing" class="fa fa-github"></a>
         <a href="https://twitter.com/0xmissing" class="fa fa-twitter"></a>

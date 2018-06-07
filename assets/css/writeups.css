@@ -4,15 +4,21 @@ body {
 
 /* blog block styling */
 .card {
-    background-color: white;
+    background-color: #343434;
     padding: 20px;
     margin-top: 20px;
 }
 
+/* preview description styling */
+p {
+    color: #e8ecef;
+}
+
+/* title of block styling */
 h2[itemprop="name"] a {
     text-decoration: none;
     font-family: 'Source Sans Pro', sans-serif;
-    color: #12ADF5;
+    color: #08abdb;
 }
 
 section[itemprop="description"] p {

@@ -1,6 +1,6 @@
 ## Use after free
 
-Use-after-free is a memory corruption flaw where memory can be accessed after being freed. This can result in a program crash, use of unexpected values, and even code execution.
+Use-after-free is a memory corruption flaw where memory can be accessed after being freed as a result of a dangling pointer. This can result in a program crash, use of unexpected values, and even code execution.
 
 As seen in the code below, *malloc()* is called and will return an address that is stored in the pointer "pFree". Though the pointer is freed, it is used again in the second *strcpy()* as the pointer still contains the value of the address that *malloc()* returned. 
 
