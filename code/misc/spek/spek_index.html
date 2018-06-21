@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <!-- meta information of doc -->
+  <head>
+    <title>missing's corner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../code.css">
+    <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+
+    <!-- banner at top of website -->
+    <picture>
+        <img src="../../../images/banner.png" alt="Banner" style="width:100%;">
+    </picture>
+
+    <!-- navigation bar -->
+    <div class="navbar">
+        <a id="navleft" href="../../../index.html">HOME</a>
+        <a id="navleft" href="../../../writeups.html">WRITE-UPS</a>
+        <a id="navleft" href="../../../code.html">CODE</a>
+        <a id="navleft" href="../../../resources.html">RESOURCES</a>
+        <a id="navright" href="#">CREDITS</a>
+        <a id="navright" href="#">ABOUT</a>
+    </div>
+
+    <div class="card">
+
+        <!-- back button -->
+        <a href="../../../code.html" class="button">Back</a>
+        
+        <!-- content generated from markdown -->
+        <h1 id="spek">spek</h1>
+
+        <p>I thought I would try my hand at fuzzing a GUI application. Hopefully, you can take something away from my experience below. </p>
+        
+        <h3 id="features">Features</h3>
+        
+        <ul>
+        <li>Acoustic spectrum analyzer written in C / C++</li>
+        
+        <li>Uses ffmpeg and wxWidgets</li>
+        
+        <li>gtk / GUI application</li>
+        </ul>
+        
+        <h2 id="researchbegins">Research Begins</h2>
+        
+        <p>Tested on Ubuntu Xenial</p>
+        
+        <p>Downloaded the src tarball from <a href="https://github.com/alexkay/spek/releases/download/v0.8.2/spek-0.8.2.tar.xz">here</a></p>
+        
+        <p>Installed dependencies</p>
+        
+        <ul>
+        <li>libwxbase2.8-0</li>
+        
+        <li>libwxbase2.8-dev</li>
+        
+        <li>libwxgtk2.8-0</li>
+        
+        <li>libwxgtk2.8-dev</li>
+        
+        <li>wx-common [2.8.12]</li>
+        
+        <li>wx2.8-headers</li>
+        
+        <li>libavcodec-dev</li>
+        
+        <li>libavformat-dev</li>
+        
+        <li>libcurl4-openssl-dev</li>
+        
+        <li>zlib1g-dev</li>
+        
+        <li>checkinstall</li>
+        
+        <li>wmctrl</li>
+        </ul>
+        
+        <p>libwxgtk2.8-0 and libwxgtk2.8-dev available from PPA</p>
+        
+        <p><code>add-apt-repository ppa:nilarimagard/webupd8 &amp;&amp; apt-get update</code></p>
+        
+        <p>Getting the binary to compile was a major pain with getting the right dependencies. </p>
+        
+        <p>You can find the debs from <a href="https://www.ubuntuupdates.org/package/webupd8/xenial/main/base/libwxgtk2.8-dev">here</a></p>
+        
+        <h3 id="preparingtofuzz">Preparing to fuzz</h3>
+        
+        <p>Because spek is a GUI application, some adaptations needed to be made to use with AFL. </p>
+        
+        <p>There are a few options:</p>
+        
+        <ol>
+        <li>Edit the source code with an exit(0)</li>
+        
+        <li>Have a watchdog script to kill the application continuously</li>
+        </ol>
+        
+        <h3 id="watchdogscript">Watchdog script</h3>
+        
+        <p>Fingerprint the application id with <code>wmctrl -mlpx</code> to use for the script.</p>
+        
+        <p><img src="spek_images/wmctrl_id.png" alt="wmctrl_id" /></p>
+        
+        <pre><code>#!/bin/bash
+        
+        while true; do
+            sleep 1
+            wmctrl -ic 0x01400022
+        done
+        </code></pre>
+        
+        <p>Note: One Test per second is really slow for fuzzing purposes, so modifying the source to exit when available is better.</p>
+        
+        <h3 id="beginningtofuzz">Beginning to fuzz</h3>
+        
+        <p>Using a sample audio file from https://www.sample-videos.com/download-sample-audio.php as the initial test input</p>
+        
+        <p>AFL was run with the below command: </p>
+        
+        <p><code>afl-fuzz -i afl_in -o afl_out -m 1000 -t 10000+ src/spek @@</code></p>
+        
+        <p><img src="spek_images/fuzzing_spek.gif" alt="fuzzing_spek" style="width:75%;"/></p>
+        
+        <h3 id="crashanalysis">Crash analysis</h3>
+        
+        <p><img src="spek_images/seg_fault.png" alt="seg_fault" /></p>
+        
+        <p>Three crashes were recorded. </p>
+        
+        <p>The crashes occured at <code>movzx ecx, BYTE PTR [rdx]</code></p>
+        
+        <p>Using gdb to analyze, the values of the registers showed:</p>
+        
+        <p><img src="spek_images/null_reg.png" alt="null_reg" /></p>
+        
+        <p>In simple terms, this is a load / read from memory. The value of rdx reflects 0x0, demonstrating a read from memory at address 0x0, effectively a NULL pointer dereference. </p>
+        
+        <p>By performing a diff on the sample input and mutated input, it was found that the mp3 frame headers were corrupted. There are disallowed combinations of bitrate and mode in the file format that when the bits of those values are flipped, will result in a crash.</p>
+        <!-- end of content -->
+
+    <!-- footer with contact info -->
+    <div class="footer">
+        <a href="https://github.com/whoismissing" class="fa fa-github"></a>
+        <a href="https://twitter.com/0xmissing" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+    </div>
+
+    </body>
+
+</html>
