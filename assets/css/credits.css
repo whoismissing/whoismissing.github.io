@@ -1,0 +1,69 @@
+.thanks-text {
+    padding: 10px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.follow-text {
+    padding: 1px;
+    text-align: center;
+    font-size: 150%;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* about block styling */
+.about-block {
+    padding: 10px;
+    background-color: black;
+    height: 300px;
+}
+
+.container {
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    float:left;
+}
+
+.overlay {
+    position: absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    float:left;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ddd;
+}
+
+.container:hover .overlay {
+    opacity: 0.5;
+}
+
+/* text block styling */
+.text-block {
+    margin-top: 30px;
+    padding-left: 400px;
+    font-family: 'Consolas', sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .text-block {
+        padding-left: 0px;
+        clear: both;
+        padding-top: 30px;
+        width: 100%;
+        height: 1600px;
+    }
+    .about-block {
+        width: 100%;
+        height: 800px;
+    }
+}

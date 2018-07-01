@@ -72,6 +72,11 @@ body {
 }
 
 .footer {
+    /* editing fixed position of footer broke some stuff */
+    /*position: fixed;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
     padding: 20px;
     text-align: center;
     background: #ddd;
