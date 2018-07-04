@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-    /* overflow: hidden; commented out to allow mobile layout */
+    overflow: hidden; /* commenting this out to allow mobile layout broke some stuff */
     background-color: #e8ecef;
     height: 55px;
     margin-top: -15px;
@@ -107,8 +107,6 @@ body {
         height: 1600px;
     }
     .navbar {
-        float: none;
-        display: block;
         text-align: left;
         height: 200px;
     }
