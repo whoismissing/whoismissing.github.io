@@ -4,14 +4,14 @@
     color: white;
     text-align: center;
     font-style: italic;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
 .follow-text {
     padding: 1px;
     text-align: center;
-    font-size: 150%;
+    font-size: 110%;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -48,7 +48,7 @@
 .text-block {
     margin-top: 30px;
     padding-left: 400px;
-    font-family: 'Consolas', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: white;
     font-size: 20px;
 }
