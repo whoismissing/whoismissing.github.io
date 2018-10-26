@@ -1,3 +1,8 @@
+---
+layout: post
+title: undynamic nosql
+---
+
 # Undynamic NoSQL
 
 Upon first viewing of the web page, we get this:
