@@ -38,7 +38,7 @@ h2 {
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
     font-size: 125%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'gamer';
     font-weight: bold;
 }
 
@@ -50,7 +50,7 @@ h2 {
     padding: 20px 30px;
     text-decoration: none; /* remove underline */
     font-size: 125%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'gamer';
     font-weight: bold;
 }
 
@@ -80,6 +80,12 @@ h2 {
     margin-top: 50px;
     margin-left: 150px;
     margin-right: 150px;
+}
+
+/* Terminal output list styling */
+#list {
+    color: white;
+    text-decoration: none; /* remove underline from URL */
 }
 
 .footer {
@@ -114,7 +120,7 @@ h2 {
 /* blinking typing cursor effect */
 .blink_me {
     animation: blinker 1s linear infinite;
-    color: #07c615;
+    color: white;
     display: inline-block;
     margin-left: -6px;
 }
