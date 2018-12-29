@@ -1,5 +1,5 @@
 body {
-    background: #f1f1f1;
+    background: #000000de;  /* changed background-color for darker theme */
 }
 
 h2 {
@@ -24,7 +24,7 @@ h2 {
 
 .navbar {
     overflow: hidden; /* commenting this out to allow mobile layout broke some stuff */
-    background-color: #e8ecef;
+    background-color: #2a6491;  /* changed background-color for darker theme */
     height: 55px;
     margin-top: -15px;
 }
@@ -56,7 +56,7 @@ h2 {
 
 /* Change color on hover */
 .navbar a:hover {
-    background-color: #ddd;
+    background-color: rgb(48, 53, 53); /* changed background-color for darker theme */
     color: black;
 }
 

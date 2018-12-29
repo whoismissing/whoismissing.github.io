@@ -1,5 +1,5 @@
 body {
-    background: #f1f1f1;
+    background: #000000de;  /* changed background-color for darker theme */
 }
 
 /* blog block styling */
@@ -17,10 +17,11 @@ p {
 /* title of block styling */
 h2[itemprop="name"] a {
     text-decoration: none;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'gamer';
     color: #08abdb;
 }
 
+/* description block styling */
 section[itemprop="description"] p {
     font-size: 125%;
     font-family: 'Source Sans Pro', sans-serif;

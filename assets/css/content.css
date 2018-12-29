@@ -4,14 +4,19 @@
     margin-bottom: 50px;
 }
 
+body {
+    background: #343434; /* changed background-color for darker theme */
+}
+
 p {
     font-family: 'Source Sans Pro', sans-serif;
     padding: 10px;
     font-size: 125%;
+    color: white;
 }
 
 .title {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'gamer';
     color: #08abdb;
 }
 
@@ -24,7 +29,7 @@ p {
 
 /* table border styling */
 #table td, #table th {
-    border: 1px solid #ddd;
+    border: 2px solid #000000de;
     padding: 8px;
     font-size: 125%;
 }
@@ -32,7 +37,7 @@ p {
 /* table text styling */
 #table a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -42,12 +47,12 @@ p {
 }
 
 #table tr:nth-child(even){
-    background-color: #f2f2f2;
+    background-color: #33323a;
 }
 
 /* change row background color on mouse hover */
 #table tr:hover {
-    background-color: #ddd;
+    background-color: rgb(11, 84, 153);
 }
 
 /* table header styling */
@@ -55,7 +60,7 @@ p {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #08abdb;
+    background-color: #2a6491;
     color: white;
 }
 
