@@ -1,8 +1,39 @@
 /* blog block styling */
 .card {
-    background-color: white;
+    background-color: #343434;
     padding: 20px;
     margin-top: 20px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    line-height: 30px; /* increased line height for readability */
+}
+
+/* image styling */
+img {
+    max-width: 75%; /* responsive image styling */
+    height: auto;
+}
+
+/* any code marked in markdown with ``` or <pre> tags will use this styling */
+/* formatting inspired by azeria labs https://azeria-labs.com/ */
+pre {
+    height: auto;
+    font-family: Consolas, monospace;
+    border: 1px solid #e2e2e2;
+    /* background: #12494e; azeria's code term color */
+    background-color: #02102b;
+    padding: 20px 20px;
+    border-radius: 3px;
+    margin: 0 0 20px 0;
+    overflow-x:auto; 
+    color:white;
+}
+
+/* link style formatting */
+a {
+    text-decoration: none; /* remove underline */
+    color: #08abdb;
 }
 
 /* Back button styling */

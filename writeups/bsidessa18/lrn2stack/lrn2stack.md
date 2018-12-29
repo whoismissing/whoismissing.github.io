@@ -80,7 +80,7 @@ To find a valid stack address, the binary was hosted on socat and hooked up to g
 
 After checking for security mitigations (no PIE, no NX, ASLR off), the proof of concept for the exploit was developed.
 
-```python
+```
 #!/usr/bin/python
 # lrn2stack.elf
 # Executed from root@aws-40:~/Downloads/bsidessactf# socat TCP-LISTEN:2323,reuseaddr,fork EXEC:"./lrn2stack.elf"
