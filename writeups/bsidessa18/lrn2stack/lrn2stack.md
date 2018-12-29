@@ -30,11 +30,12 @@ AAAA:BBBB
 
 Choosing the option 1: add credentials will prompt the user for an index to write to and then ask the user to input a 32 character username and a 32 character password. Using gdb, it was determined that the username and password would be stored adjacent on the stack.
 
-![disas1](./lrn2stack1.png)
+<!-- trick to center an image -->
+<p align="center"> <img src="./lrn2stack1.png" > </p>
 
 Choosing the option 2: print credentials will prompt the user for an index to access a username and password and print them in the format "username:password"
 
-![disas2](./lrn2stack2.png)
+<p align="center"> <img src="./lrn2stack2.png" > </p>
 
 Effectively, these can be used to write and read data.
 
@@ -70,13 +71,13 @@ Examining the instruction at 0x080f8762 was found to be add esp, 0x10 after a ca
 
 When testing the write in gdb, got a segmentation fault and overwrite of EIP
 
-![segfault](./lrn2stack3.png)
+<p align="center"> <img src="./lrn2stack3.png" > </p>
 
 At this point, a possible course of action is to first write shellcode to the stack using add credentials then use the add credentials option to write to index '.', overwriting the return address to point to the shellcode on the stack.
 
 To find a valid stack address, the binary was hosted on socat and hooked up to gdbserver. Breakpoint was set after printf at 0x08048762 when reading with option 2, then stack was examined. In the image below, the stack address used would be 0xffffce9c pointing to where the user input for username will be stored on the stack at index 0.
 
-![findstackaddress](./lrn2stack4.png)
+<p align="center"> <img src="./lrn2stack4.png" > </p>
 
 After checking for security mitigations (no PIE, no NX, ASLR off), the proof of concept for the exploit was developed.
 

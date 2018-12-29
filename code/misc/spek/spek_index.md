@@ -50,7 +50,7 @@ There are a few options:
 
 Fingerprint the application id with `wmctrl -mlpx` to use for the script.
 
-![wmctrl_id](spek_images/wmctrl_id.png)
+<p align="center"> <img src="./spek_images/wmctrl_id.png" > </p>
 
 ```
 #!/bin/bash
@@ -71,11 +71,11 @@ AFL was run with the below command:
 
 `afl-fuzz -i afl_in -o afl_out -m 1000 -t 10000+ src/spek @@`
 
-![fuzzing_spek](spek_images/fuzzing_spek.gif)
+<p align="center"> <img src="spek_images/fuzzing_spek.gif" > </p>
 
 ### Crash analysis
 
-![seg_fault](spek_images/seg_fault.png)
+<p align="center"> <img src="spek_images/seg_fault.png" > </p>
 
 Three crashes were recorded. 
 
@@ -83,7 +83,7 @@ The crashes occured at `movzx ecx, BYTE PTR [rdx]`
 
 Using gdb to analyze, the values of the registers showed:
 
-![null_reg](spek_images/null_reg.png)
+<p align="center"> <img src="spek_images/null_reg.png" > </p>
 
 In simple terms, this is a load / read from memory. The value of rdx reflects 0x0, demonstrating a read from memory at address 0x0, effectively a NULL pointer dereference. 
 

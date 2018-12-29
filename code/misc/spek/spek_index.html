@@ -109,7 +109,7 @@
         
         <p>Fingerprint the application id with <code>wmctrl -mlpx</code> to use for the script.</p>
         
-        <p><img src="spek_images/wmctrl_id.png" alt="wmctrl_id" /></p>
+        <p align="center"><img src="spek_images/wmctrl_id.png" alt="wmctrl_id" /></p>
         
         <pre><code>#!/bin/bash
         
@@ -129,11 +129,11 @@
         
         <p><code>afl-fuzz -i afl_in -o afl_out -m 1000 -t 10000+ src/spek @@</code></p>
         
-        <p><img src="spek_images/fuzzing_spek.gif" alt="fuzzing_spek" style="width:75%;"/></p>
+        <p align="center"><img src="spek_images/fuzzing_spek.gif" alt="fuzzing_spek" style="width:75%;"/></p>
         
         <h3 id="crashanalysis">Crash analysis</h3>
         
-        <p><img src="spek_images/seg_fault.png" alt="seg_fault" /></p>
+        <p align="center"><img src="spek_images/seg_fault.png" alt="seg_fault" /></p>
         
         <p>Three crashes were recorded. </p>
         
@@ -141,7 +141,7 @@
         
         <p>Using gdb to analyze, the values of the registers showed:</p>
         
-        <p><img src="spek_images/null_reg.png" alt="null_reg" /></p>
+        <p align="center"><img src="spek_images/null_reg.png" alt="null_reg" /></p>
         
         <p>In simple terms, this is a load / read from memory. The value of rdx reflects 0x0, demonstrating a read from memory at address 0x0, effectively a NULL pointer dereference. </p>
         

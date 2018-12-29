@@ -2,11 +2,11 @@
 
 Upon first viewing of the web page, we get this:
 
-![index](./1.png)
+<p align="center"> <img src="./1.png" > </p>
 
 The expected functionality is that the web page will display a file from the drop down list.
 
-![display](./2.png)
+<p align="center"> <img src="./2.png" > </p>
 
 ## Challenge Begins
 
