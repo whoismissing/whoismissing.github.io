@@ -142,6 +142,10 @@ h2 {
         text-align: left;
         height: 200px;
     }
+
+    #output {
+        margin-left: 0px; /* when screen is small (mobile, make terminal effect layout show */
+    }
 }
 
 /* Credits for font from googlectf - https://capturetheflag.withgoogle.com/ */
