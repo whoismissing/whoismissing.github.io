@@ -11,7 +11,7 @@
 
 /* image styling */
 img {
-    max-width: 75%; /* responsive image styling */
+    max-width: 100%; /* responsive image styling */
     height: auto;
     align-self: center;
     /* when writing block post insert image like so <p align="center"> <img src="./lrn2stack1.png" > </p> to align it in center */
