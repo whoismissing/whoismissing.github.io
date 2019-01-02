@@ -32,6 +32,11 @@ pre {
     color:white;
 }
 
+/* style b (bold) inside of pre tag to be visible within theme */
+b {
+    color: #08abdb;    /* this is a nice light blue color */
+}
+
 /* link style formatting */
 a {
     text-decoration: none; /* remove underline */
