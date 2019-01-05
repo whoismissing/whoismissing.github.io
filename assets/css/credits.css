@@ -33,6 +33,7 @@ h1 {
     float:left;
 }
 
+/* hover effect on circle icon */
 .overlay {
     position: absolute;
     width:300px;
@@ -42,6 +43,7 @@ h1 {
     opacity: 0;
     transition: .5s ease;
     background-color: #ddd;
+    transform: scale(0.85); /* minor edit - scale for smaller icon */
 }
 
 .container:hover .overlay {
