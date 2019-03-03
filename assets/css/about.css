@@ -2,7 +2,7 @@
 .about-block {
     padding: 10px;
     background-color: black;
-    height: 300px;
+    height: auto;
 }
 
 /* text block styling */
