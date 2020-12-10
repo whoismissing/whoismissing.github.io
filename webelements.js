@@ -8,14 +8,17 @@ function setWebElements() {
 		'sleepy',
 		'stinky',
 		'dumb',
-		'goofy'
+		'goofy',
+		'chilly',
+		'hungry'
 	];
 	setElement(adjectives, 'adjective');
 
 	var identities = [
 		'security researcher',
-		'web developer',
-		'computer scientist'
+		'software engineer',
+		'reenigne esrever',
+		'shower singer'
 	];
 	setElement(identities, 'identity');
 
@@ -27,9 +30,11 @@ function setWebElements() {
 	setElement(adverbs, 'adverb');
 
 	var projects = [
-		'gizmo',
+		'the riordan wiki',
+		'silly projects',
 		'ctf\'s',
-		'the wrong thing'
+		'the wrong thing',
+		'gamecube controller asmr'
 	];
 	setElement(projects, 'project');
 }
